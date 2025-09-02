@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watt's Up</title>
+  <link rel="stylesheet" href="css/Aula.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Botão menu hambúrguer (visível apenas em telas pequenas) -->
+  <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+
+  <!-- Barra lateral -->
+  <nav>
+    <img src="img/LOGO_PI.png" alt="Logo Watt's Up">
+    <ul>
+      <!-- <li><a href="#"><i class="fas fa-chart-line"></i> Dashboard</a></li> -->
+      <!-- <li><a href="#"><i class="fas fa-plug"></i> Dispositivos</a></li> -->
+      <!-- <li><a href="#"><i class="fas fa-bolt"></i> Consumo</a></li> -->
+      <!-- <li><a href="#"><i class="fas fa-bell"></i> Alertas</a></li> -->
+      <!-- <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li> -->
+       <li><a href="#"><i class="fa-solid fa-user"></i> Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <h1 class="titulo">Bem-vindo ao Watt's Up</h1>
+    <hr>
+
+    <div class="banner">
+      <img src="img/Banner.png" alt="Banner Watt's Up">
+    </div>
+
+    <div class="card-info">
+      <h2>O que é o Watt's Up?</h2><br>
+      <p>
+        O Watt's Up é uma plataforma inovadora para monitoramento e gestão do consumo de energia elétrica. Com ela, você acompanha em tempo real o uso dos seus dispositivos, recebe alertas personalizados e encontra dicas para economizar energia e reduzir custos. Tenha controle total e faça escolhas mais inteligentes para o seu dia a dia!
+      </p>
+    </div>
+
+    <hr>
+    <h2 class="titulo">Serviços Oferecidos: </h2>
+
+    <div class="cards">
+      <div class="card">
+        <i class="fa-solid fa-plug"></i>
+        <h3>Consumo Atual</h3>
+        <p class="p-center">1.32 kW</p>
+      </div>
+      <div class="card">
+        <h3>Uso Diário</h3>
+        <p>12.7 kWh</p>
+      </div>
+      <div class="card">
+        <h3>Custo Estimado</h3>
+        <p>R$ 13,08</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Watt's Up - Todos os direitos reservados</p>
+    </footer>
+  </main>
+
+  <script>
+    // Script para abrir/fechar menu lateral no mobile
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("nav");
+
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>
