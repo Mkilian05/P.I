@@ -1,39 +1,43 @@
-// Começo da criação do gráfico
-const ctx = document.getElementById("line-chart").getContext("2d");
-
-new Chart(ctx, {
-  type: "line",
-  data: {
-    labels: ["Jan", "Fev", "Mar", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
-    datasets: [
-      {
-        label: "Consumo em W(h)",
-        data: [5, 10, 15, 2, 18, 25, 5, 0, 3, 8, 25],
-        borderWidth: 2,
-        borderColor: 'rgba(255, 25, 253, 0.85)',
-        backgroundColor: 'transparent',
-        tension: 0.3
-      },
-      {
-        label: "Consumo em kW(h)",
-        data: [0.5, 1, 1.5, 0.2, 1.8, 2.5, 0.5, 0, 0.3, 0.8, 2.5],
-        borderWidth: 2,
-        borderColor: 'rgba(25, 255, 166, 0.85)',
-        backgroundColor: 'transparent',
-        tension: 0.3
-      }
-    ]
-  },
-  options: {
-    plugins: {
-      title: {
-        display: true,
-        text: "Relatório",
-        font: {
-          size: 20
-        }
-      }
+document.addEventListener("DOMContentLoaded", function() {
+  // Gráfico de Linha
+  const lineChart = new Chart(document.getElementById("line-chart"), {
+    type: 'line',
+    data: {
+      labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio"],
+      datasets: [{
+        label: "Consumo (kWh)",
+        data: [300, 280, 350, 320, 360],
+        borderColor: "#d08dfd",
+        backgroundColor: "rgba(208,141,253,0.2)",
+        fill: true,
+        tension: 0.4
+      }]
     }
-  }
+  });
+
+  // Gráfico de Pizza
+  const pieChart = new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
+    data: {
+      labels: ["Cozinha", "Sala", "Quarto", "Banheiro"],
+      datasets: [{
+        label: "Consumo por Cômodo",
+        data: [120, 50, 80, 30],
+        backgroundColor: ["#d08dfd", "#6c757d", "#0d6efd", "#198754"]
+      }]
+    }
+  });
+
+  // Gráfico de Barras
+  const barChart = new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["Geladeira", "TV", "Ar-condicionado", "Luz"],
+      datasets: [{
+        label: "Consumo por Dispositivo (kWh)",
+        data: [120, 50, 80, 40],
+        backgroundColor: "#d08dfd"
+      }]
+    }
+  });
 });
-// Fim criação de gráfico
