@@ -21,8 +21,8 @@
     }elseif ($page === 'register' or $page === 'login') {
       echo '<link rel="stylesheet" href="../assets/css/register.css">';
     }elseif ($page === 'dashboard_admin') {
-      echo '<link rel="stylesheet" href="/P.I/assets/css/dashboard_admin.css">';
-    }
+    echo '<link rel="stylesheet" href="../../assets/css/dashboard_admin.css">';
+}
     else{
       echo 'Erro carregar CSS';
     }

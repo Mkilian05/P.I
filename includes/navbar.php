@@ -23,6 +23,10 @@
           echo '<li class="nav-item"><a class="nav-link btn btn-roxo px-3 py-1 rounded-3" href="../views/register.php">Cadastre-se</a></li>';
         } elseif ($page === 'register') {
           echo '<li class="nav-item"><a class="nav-link btn btn-roxo px-3 py-1 rounded-3" href="../views/login.php">Login</a></li>';
+        } elseif ($page === 'dashboard_admin') { // <-- CONDIÇÃO ADICIONADA
+          echo '<li class="nav-item"><a class="nav-link text-dark fw-bold" href="#">Usuários</a></li>';
+          echo '<li class="nav-item"><a class="nav-link text-dark fw-bold" href="#">Casas</a></li>';
+          echo '<li class="nav-item"><a class="nav-link btn btn-danger px-3 py-1 rounded-3 text-white" href="#">Sair</a></li>';
         }
         ?>
       </ul>

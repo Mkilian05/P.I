@@ -4,37 +4,28 @@
  include_once '../../includes/navbar.php';
 ?>
 
-<main class="container my-5 fade-in">
-  <h1 class="text-center mb-4">Painel Administrativo</h1>
+<main class="container-dashboard my-5 py-5 fade-in">
+  <h1 class="dashboard-title">Painel Administrativo</h1>
 
-  <!-- Cards de estatísticas -->
-  <div class="row g-4 mb-5 justify-content-center">
-    <div class="col-md-4">
-      <div class="card info-card">
-        <div class="card-body text-center">
-          <i class="fa-solid fa-users fa-2x mb-2"></i>
-          <h5>Usuários Cadastrados</h5>
-          <h3>12</h3>
-        </div>
+  <div class="dashboard-cards mb-5">
+      <div class="dashboard-card">
+        <i class="fa-solid fa-users"></i>
+        <h5>Usuários Cadastrados</h5>
+        <h3 class="fw-bold">12</h3>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card info-card">
-        <div class="card-body text-center">
-          <i class="fa-solid fa-house fa-2x mb-2"></i>
-          <h5>Casas Cadastradas</h5>
-          <h3>8</h3>
-        </div>
+    
+      <div class="dashboard-card">
+        <i class="fa-solid fa-house"></i>
+        <h5>Casas Cadastradas</h5>
+        <h3 class="fw-bold">8</h3>
       </div>
-    </div>
   </div>
 
-  <!-- Tabela de usuários -->
-  <div class="card shadow-sm p-3">
-    <h4 class="mb-3"><i class="fa-solid fa-user"></i> Lista de Usuários</h4>
+  <div class="table-container">
+    <h4 class="mb-3 text-start"><i class="fa-solid fa-user"></i> Lista de Usuários</h4>
     <div class="table-responsive">
       <table class="table table-hover align-middle">
-        <thead class="table-dark">
+        <thead>
           <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -50,8 +41,8 @@
             <td>matheus@email.com</td>
             <td>2025-10-10</td>
             <td>
-              <button class="btn btn-sm btn-warning me-2"><i class="fa-solid fa-pen"></i></button>
-              <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+              <button class="icon-btn edit me-2"><i class="fa-solid fa-pen"></i></button>
+              <button class="icon-btn delete"><i class="fa-solid fa-trash"></i></button>
             </td>
           </tr>
           <tr>
@@ -60,8 +51,8 @@
             <td>ana@email.com</td>
             <td>2025-10-09</td>
             <td>
-              <button class="btn btn-sm btn-warning me-2"><i class="fa-solid fa-pen"></i></button>
-              <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+              <button class="icon-btn edit me-2"><i class="fa-solid fa-pen"></i></button>
+              <button class="icon-btn delete"><i class="fa-solid fa-trash"></i></button>
             </td>
           </tr>
           <tr>
@@ -70,8 +61,8 @@
             <td>carlos@email.com</td>
             <td>2025-10-08</td>
             <td>
-              <button class="btn btn-sm btn-warning me-2"><i class="fa-solid fa-pen"></i></button>
-              <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+              <button class="icon-btn edit me-2"><i class="fa-solid fa-pen"></i></button>
+              <button class="icon-btn delete"><i class="fa-solid fa-trash"></i></button>
             </td>
           </tr>
           <tr>
@@ -80,8 +71,8 @@
             <td>juliana@email.com</td>
             <td>2025-10-07</td>
             <td>
-              <button class="btn btn-sm btn-warning me-2"><i class="fa-solid fa-pen"></i></button>
-              <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+              <button class="icon-btn edit me-2"><i class="fa-solid fa-pen"></i></button>
+              <button class="icon-btn delete"><i class="fa-solid fa-trash"></i></button>
             </td>
           </tr>
           <tr>
@@ -90,8 +81,8 @@
             <td>ricardo@email.com</td>
             <td>2025-10-06</td>
             <td>
-              <button class="btn btn-sm btn-warning me-2"><i class="fa-solid fa-pen"></i></button>
-              <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+              <button class="icon-btn edit me-2"><i class="fa-solid fa-pen"></i></button>
+              <button class="icon-btn delete"><i class="fa-solid fa-trash"></i></button>
             </td>
           </tr>
         </tbody>
