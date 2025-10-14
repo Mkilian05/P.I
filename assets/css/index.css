@@ -1,0 +1,86 @@
+:root {
+    --roxo-principal: #7c3aed;
+    --roxo-secundario: #a78bfa;
+    --cinza-claro: #f8f9fa;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.text-roxo {
+    color: var(--roxo-principal);
+}
+
+.btn-roxo {
+    background: var(--roxo-principal);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-roxo:hover {
+    background: var(--roxo-secundario);
+    color: #fff;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, var(--roxo-principal), var(--roxo-secundario));
+    color: #fff;
+    padding: 6rem 0;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section h1,
+.hero-section p,
+.hero-section .btn {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.hero-section h1.visible,
+.hero-section p.visible,
+.hero-section .btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Para o botão, um efeito extra de hover */
+.hero-section .btn:hover {
+    background: var(--roxo-secundario);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+
+.feature-icon i {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.feature-icon i:hover {
+    transform: scale(1.2);
+    color: var(--roxo-secundario);
+}
+
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -1,0 +1,86 @@
+/* Dashboard Administrativo */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container-dashboard {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.dashboard-title {
+    font-weight: 700;
+    color: #7a3eff;
+    margin-bottom: 30px;
+}
+
+.dashboard-cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.dashboard-card {
+    background: #fff;
+    padding: 25px;
+    width: 260px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-card i {
+    color: #7a3eff;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.dashboard-card h5 {
+    margin: 10px 0 5px;
+    font-weight: 600;
+}
+
+.table-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.table thead {
+    background-color: #212529;
+    color: white;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+.icon-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+.icon-btn.edit {
+    color: #7a3eff;
+}
+
+.icon-btn.delete {
+    color: #dc3545;
+}
+
+.icon-btn:hover {
+    transform: scale(1.2);
+}

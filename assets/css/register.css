@@ -1,0 +1,79 @@
+:root {
+  --roxo-principal: #7c3aed;
+  --roxo-secundario: #a78bfa;
+  --cinza-claro: #f8f9fa;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--cinza-claro);
+  margin: 0;
+}
+
+.text-roxo {
+  color: var(--roxo-principal);
+}
+
+.btn-roxo {
+  background-color: var(--roxo-principal);
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-roxo:hover {
+  background-color: var(--roxo-secundario);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.cadastro-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background: #fdfcff;
+}
+
+.cadastro-card {
+  max-width: 420px;
+  width: 100%;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+}
+
+.cadastro-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(124, 58, 237, 0.3);
+}
+
+.form-control {
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.form-control:focus {
+  border-color: var(--roxo-principal);
+  box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.25);
+}
+
+/* Fade-in animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.input-appear {
+  animation: fadeInUp 0.8s forwards;
+}
