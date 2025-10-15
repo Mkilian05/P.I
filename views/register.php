@@ -15,27 +15,26 @@ include_once '../includes/navbar.php';
                 <p class="text-secondary">Cadastre-se e comece a monitorar seu consumo de energia com o Watt’s Up!</p>
             </div>
 
-            <form id="formCadastro">
+            <form id="formCadastro" action="/P.I/config/processa_cadastro.php" method="POST">
+                
                 <div class="mb-3">
                     <label for="nome" class="form-label"><i class="fa-solid fa-user me-1"></i> Nome completo</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Ex: Ana Silva" required>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Ana Silva" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label"><i class="fa-solid fa-envelope me-1"></i> E-mail</label>
-                    <input type="email" class="form-control" id="email" placeholder="seuemail@email.com" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="seuemail@email.com" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="senha" class="form-label"><i class="fa-solid fa-lock me-1"></i> Senha</label>
-                    <input type="password" class="form-control" id="senha" placeholder="Crie uma senha forte" required>
+                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Crie uma senha forte" required>
                 </div>
 
                 <div class="mb-4">
-                    <label for="confirmarSenha" class="form-label"><i class="fa-solid fa-lock me-1"></i> Confirmar
-                        senha</label>
-                    <input type="password" class="form-control" id="confirmarSenha" placeholder="Repita sua senha"
-                        required>
+                    <label for="confirmarSenha" class="form-label"><i class="fa-solid fa-lock me-1"></i> Confirmar senha</label>
+                    <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Repita sua senha" required>
                 </div>
 
                 <button type="submit" class="btn btn-roxo w-100 py-2 fw-semibold">
@@ -43,8 +42,7 @@ include_once '../includes/navbar.php';
                 </button>
 
                 <p class="text-center text-secondary mt-3 mb-0">
-                    Já tem uma conta? <a href="../views/login.php"
-                        class="text-roxo fw-semibold text-decoration-none">Entrar</a>
+                    Já tem uma conta? <a href="../views/login.php" class="text-roxo fw-semibold text-decoration-none">Entrar</a>
                 </p>
             </form>
         </div>
