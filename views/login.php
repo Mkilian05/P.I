@@ -13,6 +13,20 @@ include_once '../includes/navbar.php';
         <h2 class="fw-bold text-roxo"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</h2>
         <p class="text-secondary">Entre na sua conta Watt’s Up e comece a monitorar seu consumo de energia!</p>
       </div>
+      
+      <?php if (isset($_GET['sucesso'])): ?>
+        <div class="alert alert-success text-center rounded-3 py-2 mb-4">
+          <i class="fa-solid fa-check-circle me-2"></i>
+          <?php echo htmlspecialchars($_GET['sucesso']); ?>
+        </div>
+      <?php endif; ?>
+
+      <?php if (isset($_GET['erro'])): ?>
+        <div class="alert alert-danger text-center rounded-3 py-2 mb-4">
+          <i class="fa-solid fa-circle-xmark me-2"></i>
+          <?php echo htmlspecialchars($_GET['erro']); ?>
+        </div>
+      <?php endif; ?>
 
       <form id="formLogin" method="POST" action="../config/processa_login.php">
         <div class="mb-3">
