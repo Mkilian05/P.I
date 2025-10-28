@@ -16,9 +16,9 @@
  if ($page === 'index') {
   echo '<script src="./assets/scripts/index.js"></script>';
  } elseif ($page === 'register') {
-  echo '<script src="/P.I/assets/scripts/register.js"></script>';
+  echo '<script src="../assets/scripts/register.js"></script>';
  } elseif ($page === 'login') {
-  echo '<script src="/P.I/assets/scripts/login.js"></script>';
+  echo '<script src="../assets/scripts/login.js"></script>';
  } elseif ($page === 'dashboard_admin') {
   // Recomendo usar o caminho relativo que funcionou para o CSS
   echo '<script src="../../assets/scripts/dashboard_admin.js"></script>';

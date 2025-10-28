@@ -10,7 +10,7 @@ include_once '../includes/navbar.php';
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card cadastro-card p-4 shadow-lg rounded-4">
             <div class="text-center mb-4">
-                <img src="/P.I/assets/img/LOGO_PI.png" alt="Logo" width="70" class="mb-3">
+                <img src="../assets/img/LOGO_PI.png" alt="Logo" width="70" class="mb-3">
                 <h2 class="fw-bold text-roxo"><i class="fa-solid fa-user-plus me-2"></i>Crie sua conta</h2>
                 <p class="text-secondary">Cadastre-se e comece a monitorar seu consumo de energia com o Watt’s Up!</p>
             </div>
@@ -27,7 +27,7 @@ include_once '../includes/navbar.php';
                 </div>
             <?php endif; ?>
 
-            <form id="formCadastro" action="/P.I/config/processa_cadastro.php" method="POST">
+            <form id="formCadastro" action="../config/processa_cadastro.php" method="POST">
 
                 <div class="mb-3">
                     <label for="nome" class="form-label"><i class="fa-solid fa-user me-1"></i> Nome completo</label>

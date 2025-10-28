@@ -6,7 +6,7 @@
   <title>Watt’s Up! - Controle seu Consumo de Energia</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="/P.I/assets/img/LOGO_PI.png">
+  <link rel="icon" href="../assets/img/LOGO_PI.png">
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +17,7 @@
   <!-- CSS dinâmico -->
   <?php
     if ($page === 'index') {
-      echo '<link rel="stylesheet" href="/P.I/assets/css/index.css">';
+      echo '<link rel="stylesheet" href="../assets/css/index.css">';
     }elseif ($page === 'register' or $page === 'login') {
       echo '<link rel="stylesheet" href="../assets/css/register.css">';
     }elseif ($page === 'dashboard_admin') {

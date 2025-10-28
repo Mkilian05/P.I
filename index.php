@@ -16,7 +16,7 @@ include_once "./includes/navbar.php";
                 <a href="#cadastro" class="btn btn-light btn-lg mt-3">Conheça o Watt’s Up!</a>
             </div>
             <div class="col-lg-6 text-center">
-                <img src="/P.I/assets/img/Hero.png" alt="Casa inteligente" class="img-fluid hero-img">
+                <img src="../assets/img/Hero.png" alt="Casa inteligente" class="img-fluid hero-img">
             </div>
         </div>
     </div>
@@ -160,7 +160,7 @@ include_once "./includes/navbar.php";
     <div class="container">
         <h2 class="fw-bold mb-3">Pronto para transformar sua casa em uma Smart Home?</h2>
         <p class="lead mb-4">Cadastre-se agora e conheça o futuro da eficiência energética!</p>
-        <a href="/P.I/views/register.php" class="btn btn-light btn-lg fw-semibold px-4 hero-btn">Cadastre-se
+        <a href="../views/register.php" class="btn btn-light btn-lg fw-semibold px-4 hero-btn">Cadastre-se
             gratuitamente</a>
     </div>
 </section>

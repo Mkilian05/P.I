@@ -9,7 +9,7 @@ include_once '../includes/navbar.php';
   <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="card cadastro-card p-4 shadow-lg rounded-4">
       <div class="text-center mb-4">
-        <img src="/P.I/assets/img/LOGO_PI.png" alt="Logo" width="70" class="mb-3">
+        <img src="../assets/img/LOGO_PI.png" alt="Logo" width="70" class="mb-3">
         <h2 class="fw-bold text-roxo"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</h2>
         <p class="text-secondary">Entre na sua conta Watt’s Up e comece a monitorar seu consumo de energia!</p>
       </div>
