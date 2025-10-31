@@ -1,0 +1,187 @@
+/* assets/css/ambientes.css */
+
+/* Estilo para o cabeçalho da página (H1 e parágrafo).
+  Copiado do casas.css para manter o padrão.
+*/
+.top-header {
+    background-color: var(--branco);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px var(--sombra);
+}
+
+.top-header h1 {
+    margin: 0 0 5px 0;
+    color: var(--roxo);
+}
+.top-header p {
+    margin: 0;
+    color: #666;
+}
+
+
+/* Grid que segura os cards de ambientes */
+.ambientes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsivo */
+    gap: 25px;
+    padding-top: 10px;
+}
+
+/* Estilo para os Cards de Ambiente Individual */
+.ambiente-card {
+    background-color: var(--branco);
+    border-radius: 20px;
+    box-shadow: 0 5px 20px var(--sombra);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ambiente-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.ambiente-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ambiente-header h2 {
+    margin: 0;
+    font-size: 1.3em;
+    color: var(--roxo);
+}
+
+.ambiente-icon {
+    font-size: 1.5em;
+    color: var(--roxo);
+    opacity: 0.7;
+}
+
+.ambiente-location {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.ambiente-location i {
+    margin-right: 8px;
+    color: var(--roxo);
+}
+
+.ambiente-details p {
+    margin: 5px 0;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    color: #555;
+    font-weight: 600;
+}
+
+.ambiente-details p i {
+    margin-right: 8px;
+    color: var(--roxo);
+}
+
+/* Botão de "Gerenciar Dispositivos" */
+.view-details-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: var(--roxo);
+    color: var(--branco);
+    text-decoration: none;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+    font-size: 0.9em;
+    font-weight: 600;
+    align-self: flex-start;
+}
+
+.view-details-btn i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.view-details-btn:hover {
+    background-color: var(--roxo-escuro);
+}
+
+.view-details-btn:hover i {
+    transform: translateX(3px);
+}
+
+/* Estilo para o Card de Adicionar Novo Ambiente */
+.add-ambiente-card {
+    background-color: var(--branco);
+    border-radius: 20px;
+    box-shadow: 0 5px 20px var(--sombra);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--roxo);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 200px; /* Altura mínima */
+}
+
+.add-ambiente-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.add-ambiente-card p {
+    margin-top: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--roxo);
+}
+
+/* O círculo roxo é idêntico ao de casas, então podemos reutilizar */
+.add-circle {
+    width: 80px;
+    height: 80px;
+    background-color: var(--roxo); /* Bola roxa */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.add-ambiente-card:hover .add-circle {
+    background-color: var(--roxo-escuro);
+}
+
+.add-circle .icon-plus {
+    color: var(--branco); /* Sinal de adição branco */
+    font-size: 2.5em;
+}
+
+/* Animação de clique do JS */
+.add-ambiente-card.clicked {
+    animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1.03); }
+    50% { transform: scale(0.98); }
+    100% { transform: scale(1.03); }
+}

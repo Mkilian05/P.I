@@ -1,0 +1,172 @@
+:root {
+  --roxo: #7a3ef2;
+  --roxo-escuro: #5a29b9;
+  --branco: #ffffff;
+  --cinza: #f5f5f7;
+  --sombra: rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background: var(--branco);
+}
+
+.sidebar {
+  width: 260px;
+  background: var(--branco);
+  border-right: 1px solid #eee;
+  padding: 2rem 1rem;
+  height: 100vh;
+  position: fixed;
+  box-shadow: 2px 0 10px var(--sombra);
+}
+
+.sidebar-logo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sidebar-logo img {
+  width: 100px;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin: 1rem 0;
+}
+
+.sidebar-menu a {
+  color: var(--roxo);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.8rem 1rem;
+  display: block;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+  background: var(--roxo);
+  color: var(--branco);
+}
+
+.dashboard-content {
+  margin-left: 260px;
+  padding: 2rem 3rem;
+  width: calc(100% - 260px);
+  padding-bottom: 60px; 
+  background: transparent; 
+  background: linear-gradient(
+    to bottom,     
+    var(--branco) 0%, 
+    #e9dfff 100%    /* <-- Cor anterior era #faf5ff */
+  );
+}
+
+.cards-container {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.card {
+  background: var(--branco);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 5px 20px var(--sombra);
+  flex: 1;
+  min-width: 260px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.btn-primary {
+  background: var(--roxo);
+  color: var(--branco);
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: var(--roxo-escuro);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--roxo);
+  color: var(--roxo);
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--roxo);
+  color: var(--branco);
+}
+
+.table-section {
+  margin-top: 2rem;
+}
+
+/* No seu arquivo dashboard.css */
+
+/* *************************************************************** */
+/* COLE OU SUBSTITUA SEU CÓDIGO 'footer' ATUAL POR ESTE:
+/* *************************************************************** */
+
+/* * Rodapé RELATIVO (solto) com fundo BRANCO SÓLIDO
+ */
+footer {
+  /* --- ESTA É A CORREÇÃO MAIS IMPORTANTE --- */
+  /* Precisamos garantir que o rodapé tenha sua própria cor de fundo */
+  background: var(--branco); 
+  
+  /* Mantém o alinhamento com a sidebar */
+  /* (Verifique se 260px é a largura exata da sua sidebar) */
+  margin-left: 260px;
+  width: calc(100% - 260px);
+
+  /* Estilos para espaçamento e texto */
+  padding: 1rem 3rem; 
+  text-align: center;
+  box-sizing: border-box; 
+  
+  /* Uma margem para separar do conteúdo acima (dos cards) */
+  margin-top: 2rem; 
+  
+  /* Linha sutil de separação, agora em cima */
+  border-top: 1px solid #eee;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

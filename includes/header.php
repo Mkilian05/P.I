@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,17 +17,25 @@
 
   <!-- CSS dinâmico -->
   <?php
-    if ($page === 'index') {
-      echo '<link rel="stylesheet" href="../assets/css/index.css">';
-    }elseif ($page === 'register' or $page === 'login') {
-      echo '<link rel="stylesheet" href="../assets/css/register.css">';
-    }elseif ($page === 'dashboard_admin') {
+  if ($page === 'index') {
+    echo '<link rel="stylesheet" href="../assets/css/index.css">';
+  } elseif ($page === 'register' or $page === 'login') {
+    echo '<link rel="stylesheet" href="../assets/css/register.css">';
+  } elseif ($page === 'dashboard_admin') {
     echo '<link rel="stylesheet" href="../../assets/css/dashboard_admin.css">';
-}
-    else{
-      echo 'Erro carregar CSS';
-    }
-?>
+  } elseif ($page === 'dashboard') {
+    echo '<link rel="stylesheet" href="../assets/css/dashboard.css">';
+  }elseif ($page === 'casas') {
+    echo '<link rel="stylesheet" href="../assets/css/dashboard.css">';
+    echo'<link rel="stylesheet" href="../assets/css/casas.css">';
+  }elseif ($page === 'ambientes') {
+    echo '<link rel="stylesheet" href="../assets/css/dashboard.css">';
+    echo'<link rel="stylesheet" href="../assets/css/ambientes.css">';
+  }
+   else {
+    echo 'Erro carregar CSS';
+  }
+  ?>
 </head>
 
 <body>

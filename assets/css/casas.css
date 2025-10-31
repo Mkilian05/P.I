@@ -1,0 +1,199 @@
+.top-header {
+    background-color: var(--branco);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px var(--sombra);
+}
+
+.top-header h1 {
+    margin: 0 0 5px 0;
+    color: var(--roxo);
+}
+.top-header p {
+    margin: 0;
+    color: #666;
+}
+
+
+/* Grid que segura os cards */
+.houses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsivo */
+    gap: 25px;
+    padding-top: 10px;
+}
+
+/* Estilo para os Cards de Casa Individual */
+.house-card {
+    background-color: var(--branco);
+    border-radius: 20px; /* Usando o mesmo raio dos seus cards */
+    box-shadow: 0 5px 20px var(--sombra); /* Usando sua sombra */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.house-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.house-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.house-header h2 {
+    margin: 0;
+    font-size: 1.3em;
+    color: var(--roxo);
+}
+
+.house-address {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.house-address i {
+    margin-right: 8px;
+    color: var(--roxo);
+}
+
+.house-details p {
+    margin: 5px 0;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    color: #555;
+}
+
+.house-details p i {
+    margin-right: 8px;
+    color: var(--roxo);
+}
+
+/* Status (Online/Offline) */
+.status {
+    font-size: 0.8em;
+    padding: 4px 8px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.status i {
+    font-size: 0.6em;
+    margin-right: 5px;
+}
+
+.status.online {
+    background-color: #e8f5e9;
+    color: #4CAF50;
+}
+
+.status.offline {
+    background-color: #ffe0b2;
+    color: #FF9800;
+}
+
+/* Botão de "Ver Detalhes" */
+.view-details-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: var(--roxo);
+    color: var(--branco);
+    text-decoration: none;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+    font-size: 0.9em;
+    font-weight: 600;
+    align-self: flex-start;
+}
+
+.view-details-btn i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.view-details-btn:hover {
+    background-color: var(--roxo-escuro);
+}
+
+.view-details-btn:hover i {
+    transform: translateX(3px);
+}
+
+/* Estilo para o Card de Adicionar Nova Casa */
+.add-house-card {
+    background-color: var(--branco);
+    border-radius: 20px;
+    box-shadow: 0 5px 20px var(--sombra);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--roxo);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 200px; /* Altura mínima */
+}
+
+.add-house-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.add-house-card p {
+    margin-top: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--roxo);
+}
+
+.add-circle {
+    width: 80px;
+    height: 80px;
+    background-color: var(--roxo); /* Bola roxa */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.add-house-card:hover .add-circle {
+    background-color: var(--roxo-escuro);
+}
+
+.add-circle .icon-plus {
+    color: var(--branco); /* Sinal de adição branco */
+    font-size: 2.5em;
+}
+
+/* Animação de clique do JS */
+.add-house-card.clicked {
+    animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1.03); }
+    50% { transform: scale(0.98); }
+    100% { transform: scale(1.03); }
+}
