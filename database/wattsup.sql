@@ -8,6 +8,9 @@ CREATE TABLE usuarios(
     email VARCHAR(225) NOT NULL,
     senha VARCHAR(255) NOT NULL,
     nome_usuario VARCHAR(225) NOT NULL,
+    is_deleted BOOLEAN,
+    deleted_at DATE,
+    tipo ENUM,
     PRIMARY KEY (id_usuario)
 );
 
@@ -26,6 +29,8 @@ CREATE TABLE casa(
     cep VARCHAR(10) NOT NULL, 
     cidade VARCHAR(225) NOT NULL,
     bairro VARCHAR(225) NOT NULL,
+    is_deleted BOOLEAN,
+    deleted_at DATE, 
     fk_usuario_id_usuario INT(11) NOT NULL,
     PRIMARY KEY (id_casa),
     FOREIGN KEY (fk_usuario_id_usuario) REFERENCES usuarios(id_usuario)
@@ -36,6 +41,8 @@ CREATE TABLE dispositivos(
     nome_dispositivo VARCHAR(50) NOT NULL,
     potencia_dispositivo DOUBLE NOT NULL, -- Removido (5) que era inválido para DOUBLE
     fk_categoria_dispositivo_id_categoria INT(3) NOT NULL,
+    is_deleted BOOLEAN,
+    deleted_at DATE,
     PRIMARY KEY (id_dispositivo),
     FOREIGN KEY (fk_categoria_dispositivo_id_categoria) REFERENCES categoria_dispositivos(id_categoria)
 );
@@ -45,6 +52,9 @@ CREATE TABLE ambiente(
     id_ambiente INT(3) NOT NULL AUTO_INCREMENT,
     nome_ambiente VARCHAR(100) NOT NULL,
     fk_casa_id_casa INT(11) NOT NULL, -- Ajustado para ser igual a casa.id_casa
+    is_deleted BOOLEAN,
+    deleted_at DATE,
+    quantidade INT(3),
     PRIMARY KEY(id_ambiente),
     FOREIGN KEY (fk_casa_id_casa) REFERENCES casa(id_casa)
 );
