@@ -54,7 +54,6 @@ CREATE TABLE ambiente(
     fk_casa_id_casa INT(11) NOT NULL, -- Ajustado para ser igual a casa.id_casa
     is_deleted BOOLEAN,
     deleted_at DATE,
-    quantidade INT(3),
     PRIMARY KEY(id_ambiente),
     FOREIGN KEY (fk_casa_id_casa) REFERENCES casa(id_casa)
 );
@@ -64,6 +63,7 @@ CREATE TABLE ambiente_dispositivo(
     id_ambiente_dispositivo INT(3) NOT NULL AUTO_INCREMENT,
     fk_ambiente_id_ambiente INT(3) NOT NULL,
     fk_dispositivo_id_dispositivo INT(3) NOT NULL,
+    quantidade INT(3),
     PRIMARY KEY (id_ambiente_dispositivo),
     FOREIGN KEY (fk_ambiente_id_ambiente) REFERENCES ambiente(id_ambiente),
     FOREIGN KEY (fk_dispositivo_id_dispositivo) REFERENCES dispositivos(id_dispositivo)

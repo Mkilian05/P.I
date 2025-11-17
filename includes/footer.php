@@ -20,15 +20,18 @@ if ($page === 'index') {
 } elseif ($page === 'login') {
   echo '<script src="../assets/scripts/login.js"></script>';
 } elseif ($page === 'dashboard_admin') {
-  // Recomendo usar o caminho relativo que funcionou para o CSS
   echo '<script src="../../assets/scripts/dashboard_admin.js"></script>';
 } elseif ($page === 'dashboard') {
   echo '<script src="../assets/scripts/dashboard.js" defer></script>';
 }elseif ($page === 'casas') {
   echo '<script src="../assets/scripts/casas.js" defer></script>';
+}elseif ($page === 'ambientes') {
+  echo '<script src="../assets/scripts/ambientes.js" defer></script>';
+}elseif ($page === 'dispositivos') {
+  echo '<script src="../assets/scripts/dispositivos.js" defer></script>';
 }
  else {
-  echo ''; // É melhor comentar o erro do que exibi-lo na tela
+  echo '';
 }
 ?>
 

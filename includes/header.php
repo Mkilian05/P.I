@@ -31,6 +31,9 @@
   }elseif ($page === 'ambientes') {
     echo '<link rel="stylesheet" href="../assets/css/dashboard.css">';
     echo'<link rel="stylesheet" href="../assets/css/ambientes.css">';
+  }elseif ($page === 'dispositivos') {
+    echo '<link rel="stylesheet" href="../assets/css/dashboard.css">';
+    echo'<link rel="stylesheet" href="../assets/css/dispositivos.css">';
   }
    else {
     echo 'Erro carregar CSS';
