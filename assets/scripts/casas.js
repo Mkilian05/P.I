@@ -1,43 +1,41 @@
-// casas.js - Específico para a página de Casas
+// assets/js/casas.js
+
 document.addEventListener('DOMContentLoaded', () => {
-    const addHouseCard = document.getElementById('addHouseCard');
+    
+    const addCard = document.getElementById('addCasaCard');
+    const modal = document.getElementById('modalCasa');
+    const closeBtn = document.getElementById('modalCloseBtn');
+    const cancelBtn = document.getElementById('modalCancelBtn');
 
-    if (addHouseCard) {
-        // Exemplo de animação mais sutil ao clicar
-        addHouseCard.addEventListener('click', (event) => {
-            // Previne o comportamento padrão do link para fazer a animação primeiro
-            event.preventDefault(); 
-            
-            // Adiciona uma classe para o efeito de clique
-            addHouseCard.classList.add('clicked');
+    // Função para FECHAR
+    const fechar = () => {
+        if (modal) modal.classList.add('hidden');
+    };
 
-            // Redireciona após a animação (ex: 300ms)
-            setTimeout(() => {
-                window.location.href = addHouseCard.href;
-            }, 300);
+    // Função para ABRIR (com proteção)
+    const abrir = (event) => {
+        if(event) {
+            event.preventDefault();
+            event.stopPropagation(); // Impede conflito com links globais
+        }
+        if (modal) modal.classList.remove('hidden');
+    };
+
+    // Eventos
+    if (addCard) addCard.addEventListener('click', abrir);
+    if (closeBtn) closeBtn.addEventListener('click', fechar);
+    
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            fechar();
         });
+    }
 
-        // CSS para a animação de clique (você pode adicionar no casas.css)
-        // .add-house-card.clicked {
-        //     animation: pulse 0.3s ease-in-out;
-        // }
-        // @keyframes pulse {
-        //     0% { transform: scale(1.03); }
-        //     50% { transform: scale(0.98); }
-        //     100% { transform: scale(1.03); }
-        // }
-        
-        // Ou uma animação JS direta
-        addHouseCard.addEventListener('mousedown', () => {
-            addHouseCard.style.transform = 'scale(0.98)';
-        });
-
-        addHouseCard.addEventListener('mouseup', () => {
-            addHouseCard.style.transform = 'scale(1.03)'; // Volta ao estado de hover
-        });
-
-        addHouseCard.addEventListener('mouseleave', () => {
-            addHouseCard.style.transform = 'scale(1)'; // Volta ao estado normal
+    // Fechar ao clicar fora
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) fechar();
         });
     }
 });

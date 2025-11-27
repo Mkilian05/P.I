@@ -10,7 +10,7 @@ CREATE TABLE usuarios(
     nome_usuario VARCHAR(225) NOT NULL,
     is_deleted BOOLEAN,
     deleted_at DATE,
-    tipo ENUM,
+    tipo ENUM('Usuario', 'Admin'),
     PRIMARY KEY (id_usuario)
 );
 

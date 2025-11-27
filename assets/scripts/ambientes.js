@@ -1,31 +1,49 @@
-// ambientes.js - Específico para a página de Ambientes
+// assets/js/ambientes.js
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Procura pelo ID do NOVO card
-    const addAmbienteCard = document.getElementById('addAmbienteCard');
+    
+    const addCard = document.getElementById('addAmbienteCard');
+    const modal = document.getElementById('modalAmbiente');
+    const closeBtn = document.getElementById('modalCloseBtn');
+    const cancelBtn = document.getElementById('modalCancelBtn');
 
-    if (addAmbienteCard) {
-        // Previne o clique para fazer a animação
-        addAmbienteCard.addEventListener('click', (event) => {
-            event.preventDefault(); 
-            addAmbienteCard.classList.add('clicked');
+    // Função para FECHAR o modal
+    const fechar = () => {
+        if (modal) modal.classList.add('hidden');
+    };
 
-            // Redireciona após a animação
-            setTimeout(() => {
-                window.location.href = addAmbienteCard.href;
-            }, 300);
+    // Função para ABRIR o modal (COM PROTEÇÃO)
+    const abrir = (event) => {
+        // 1. Impede comportamentos padrões (como seguir links)
+        if(event) event.preventDefault(); 
+        
+        // 2. A MÁGICA: Impede que o clique "suba" para o pai ou scripts globais
+        // Isso evita que scripts genéricos de ".card" tentem redirecionar a página
+        if(event) event.stopPropagation(); 
+
+        if (modal) modal.classList.remove('hidden');
+    };
+
+    // Eventos
+    if (addCard) {
+        addCard.addEventListener('click', abrir);
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', fechar);
+    }
+
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita que o botão recarregue a página
+            fechar();
         });
+    }
 
-        // Efeitos de "pressionar" com o mouse
-        addAmbienteCard.addEventListener('mousedown', () => {
-            addAmbienteCard.style.transform = 'scale(0.98)';
-        });
-
-        addAmbienteCard.addEventListener('mouseup', () => {
-            addAmbienteCard.style.transform = 'scale(1.03)';
-        });
-
-        addAmbienteCard.addEventListener('mouseleave', () => {
-            addAmbienteCard.style.transform = 'scale(1)';
+    // Fechar ao clicar fora (no fundo escuro)
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) fechar();
         });
     }
 });

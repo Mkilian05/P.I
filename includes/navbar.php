@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
   <div class="container">
-    <a class="navbar-brand fw-bold text-roxo" href="#">
+    <a class="navbar-brand fw-bold text-roxo" href="index.php">
       <img src="../../assets/img/LOGO_PI.png" alt="Logo" width="40" class="me-2">
       Watt’s Up!
     </a>

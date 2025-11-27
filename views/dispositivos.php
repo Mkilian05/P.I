@@ -1,19 +1,19 @@
 <?php 
   $page = 'dispositivos'; 
+  require_once __DIR__ . '/../includes/auth.php';
+  require_once __DIR__ . '/../config/database.php';
   
-  session_start();
-  require_once __DIR__ . '/../config/database.php'; // Seu arquivo de conexão $conn
-  
+  // SEGURANÇA: ID do usuário
+  $id_usuario = $_SESSION['id_usuario'] ?? 1;
+
   $erros = $_SESSION['erros'] ?? [];
   $sucesso = $_SESSION['sucesso'] ?? null;
   unset($_SESSION['erros'], $_SESSION['sucesso']);
 
-  // 3. LÓGICA DE EXIBIÇÃO (SELECTS com MySQLi)
-  
-  // 1. Pegar lista de DISPOSITIVOS CADASTRADOS (CORRIGIDO)
-  // --- CONSULTA FINAL CORRIGIDA 100% BASEADA NAS SUAS CAPTURAS DE TELA ---
+  // 1. SELECT DISPOSITIVOS (Filtrado por Usuário)
   $sql_dispositivos = "
       SELECT 
+          d.id_dispositivo,
           d.nome_dispositivo, 
           c.nome_categoria,
           a.nome_ambiente,
@@ -22,36 +22,41 @@
       FROM 
           ambiente_dispositivo AS ad
       JOIN 
-          dispositivos AS d ON ad.fk_id_dispositivo = d.id_dispositivo  --
+          dispositivos AS d ON ad.fk_disp_id_disp = d.id_dispositivo
       JOIN 
-          ambiente AS a ON ad.fk_id_ambiente = a.id_ambiente          --
+          ambiente AS a ON ad.fk_ambi_id_ambi = a.id_ambiente
       JOIN 
-          categoria_dispositivos AS c ON d.fk_id_categoria = c.id_categoria --
+          categoria_dispositivos AS c ON d.fk_cat_disp_id_cat = c.id_categoria
       JOIN 
-          casa AS k ON a.fk_id_casa = k.id_casa                        --
+          casa AS k ON a.fk_casa_id_casa = k.id_casa
+      WHERE 
+          k.fk_usuario_id_usuario = ? 
+          AND (d.is_deleted IS NULL OR d.is_deleted = 0)
+      ORDER BY 
+          k.nome_casa, a.nome_ambiente, d.nome_dispositivo
   ";
   
-  // Esta é a linha que estava dando o erro
-  $result_dispositivos = $conn->query($sql_dispositivos);
-  if(!$result_dispositivos) {
-      die("Erro na consulta SQL: " . $conn->error . " <br><br>Query:<br>" . nl2br(htmlspecialchars($sql_dispositivos)));
-  }
-  $lista_dispositivos = $result_dispositivos->fetch_all(MYSQLI_ASSOC);
+  $stmt = $conn->prepare($sql_dispositivos);
+  $stmt->bind_param("i", $id_usuario);
+  $stmt->execute();
+  $lista_dispositivos = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
   
-  // 2. Pegar lista de AMBIENTES (para o dropdown)
-  // --- CORRIGIDO ---
+  // 2. LISTAS PARA O MODAL (Ambientes do Usuário e Categorias)
+  // Filtra ambientes onde a casa pertence ao usuário
   $sql_ambientes = "
       SELECT a.id_ambiente, a.nome_ambiente, k.nome_casa 
-      FROM ambiente AS a 
-      JOIN casa AS k ON a.fk_id_casa = k.id_casa --
+      FROM ambiente a 
+      JOIN casa k ON a.fk_casa_id_casa = k.id_casa 
+      WHERE k.fk_usuario_id_usuario = ? 
+      AND (a.is_deleted IS NULL OR a.is_deleted = 0)
   ";
-  $result_ambientes = $conn->query($sql_ambientes);
-  $ambientes = $result_ambientes->fetch_all(MYSQLI_ASSOC);
+  $stmt_amb = $conn->prepare($sql_ambientes);
+  $stmt_amb->bind_param("i", $id_usuario);
+  $stmt_amb->execute();
+  $ambientes = $stmt_amb->get_result()->fetch_all(MYSQLI_ASSOC);
 
-  // 3. Pegar lista de CATEGORIAS (para o dropdown)
-  $sql_categorias = "SELECT * FROM categoria_dispositivos";
-  $result_categorias = $conn->query($sql_categorias);
-  $categorias = $result_categorias->fetch_all(MYSQLI_ASSOC);
+  // Categorias são públicas, não precisa de filtro
+  $categorias = $conn->query("SELECT * FROM categoria_dispositivos")->fetch_all(MYSQLI_ASSOC);
 
   function getIconeCategoria($nome_categoria) {
       switch (strtolower($nome_categoria)) {
@@ -74,70 +79,70 @@
   </header>
 
   <?php if (!empty($erros)): ?>
-      <div class="alerta erro">
-          <?php foreach ($erros as $erro): ?>
-              <p><?php echo htmlspecialchars($erro); ?></p>
-          <?php endforeach; ?>
-      </div>
+      <div class="alerta erro"><?php foreach ($erros as $erro): echo "<p>$erro</p>"; endforeach; ?></div>
   <?php endif; ?>
   
   <?php if ($sucesso): ?>
-      <div class="alerta sucesso">
-          <p><?php echo htmlspecialchars($sucesso); ?></p>
-      </div>
+      <div class="alerta sucesso"><p><?php echo htmlspecialchars($sucesso); ?></p></div>
   <?php endif; ?>
 
   <section class="dispositivos-grid">
       
-      <?php foreach ($lista_dispositivos as $dispositivo): ?>
+      <?php if(empty($lista_dispositivos)): ?>
+            <p style="grid-column: 1/-1; text-align: center; color: #666; margin-top: 2rem;">Nenhum dispositivo encontrado.</p>
+      <?php endif; ?>
+
+      <?php foreach ($lista_dispositivos as $disp): ?>
       <div class="dispositivo-card">
           <div class="dispositivo-header">
-              <h2><?php echo htmlspecialchars($dispositivo['nome_dispositivo']); ?></h2>
-              <span class="dispositivo-qtd">x<?php echo htmlspecialchars($dispositivo['quantidade']); ?></span>
-              <i class="<?php echo getIconeCategoria($dispositivo['nome_categoria']); ?> dispositivo-icon"></i>
+              <h2><?php echo htmlspecialchars($disp['nome_dispositivo']); ?></h2>
+              <span class="status online" style="font-size: 0.8em; padding: 2px 8px;">x<?php echo $disp['quantidade']; ?></span>
+              <i class="<?php echo getIconeCategoria($disp['nome_categoria']); ?> dispositivo-icon"></i>
           </div>
           <p class="dispositivo-location">
               <i class="fas fa-map-marker-alt"></i> 
-              <?php echo htmlspecialchars($dispositivo['nome_ambiente']); ?> 
-              (<?php echo htmlspecialchars($dispositivo['nome_casa']); ?>)
+              <?php echo htmlspecialchars($disp['nome_ambiente']); ?> 
+              <small>(<?php echo htmlspecialchars($disp['nome_casa']); ?>)</small>
           </p>
-          <a href="#" class="view-details-btn">Configurar <i class="fas fa-cog"></i></a>
+          
+          <a href="gerencia_dispositivos.php?id=<?php echo $disp['id_dispositivo']; ?>" class="btn-editar-card">
+              Configurar
+          </a>
       </div>
       <?php endforeach; ?>
       
-      <a href="#" class="add-dispositivo-card" id="addDispositivoCard">
+      <div class="add-dispositivo-card" id="addDispositivoCard">
           <div class="add-circle">
               <i class="fas fa-plus icon-plus"></i>
           </div>
           <p>Adicionar Novo Dispositivo</p>
-      </a>
+      </div>
   </section>
 
 </main>
 
 <div class="modal-backdrop hidden" id="modalDispositivo">
     <div class="modal-content">
-        
         <header class="modal-header">
             <h2>Adicionar Novo Dispositivo</h2>
             <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
         </header>
 
         <form class="modal-body" id="formDispositivo" method="POST" action="../config/processa_dispositivos.php">
+            <input type="hidden" name="acao" value="cadastrar">
             
             <div class="form-group">
                 <label for="dispositivoNome">Nome do Dispositivo</label>
-                <input type="text" id="dispositivoNome" name="dispositivoNome" placeholder="Ex: Lâmpada LED 9W" required>
+                <input type="text" id="dispositivoNome" name="dispositivoNome" placeholder="Ex: Lâmpada LED" required>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="dispositivoPotencia">Potência (em Watts)</label>
+                    <label for="dispositivoPotencia">Potência (W)</label>
                     <input type="number" step="0.1" id="dispositivoPotencia" name="dispositivoPotencia" placeholder="Ex: 9" required>
                 </div>
-                
                 <div class="form-group">
-                    <label for="dispositivoQuantidade">Quantidade</label>
+                    <label for="dispositivoQuantidade">Qtd</label>
                     <input type="number" id="dispositivoQuantidade" name="dispositivoQuantidade" value="1" min="1" required>
                 </div>
             </div>
@@ -145,35 +150,32 @@
             <div class="form-group">
                 <label for="dispositivoAmbiente">Ambiente</label>
                 <select id="dispositivoAmbiente" name="dispositivoAmbiente" required>
-                    <option value="" disabled selected>Selecione um ambiente...</option>
-                    <?php foreach ($ambientes as $ambiente): ?>
-                        <option value="<?php echo $ambiente['id_ambiente']; ?>">
-                            <?php echo htmlspecialchars($ambiente['nome_ambiente']); ?> 
-                            (<?php echo htmlspecialchars($ambiente['nome_casa']); ?>)
+                    <option value="" disabled selected>Selecione...</option>
+                    <?php foreach ($ambientes as $amb): ?>
+                        <option value="<?php echo $amb['id_ambiente']; ?>">
+                            <?php echo htmlspecialchars($amb['nome_ambiente']); ?> (<?php echo htmlspecialchars($amb['nome_casa']); ?>)
                         </option>
                     <?php endforeach; ?>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="dispositivoTipo">Tipo de Dispositivo</label>
+                <label for="dispositivoTipo">Categoria</label>
                 <select id="dispositivoTipo" name="dispositivoTipo" required>
-                    <option value="" disabled selected>Selecione o tipo...</option>
-                    <?php foreach ($categorias as $categoria): ?>
-                        <option value="<?php echo $categoria['id_categoria']; ?>">
-                            <?php echo htmlspecialchars($categoria['nome_categoria']); ?>
+                    <option value="" disabled selected>Selecione...</option>
+                    <?php foreach ($categorias as $cat): ?>
+                        <option value="<?php echo $cat['id_categoria']; ?>">
+                            <?php echo htmlspecialchars($cat['nome_categoria']); ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
             </div>
-
         </form>
 
         <footer class="modal-footer">
             <button class="btn-outline" id="modalCancelBtn">Cancelar</button>
-            <button type="submit" form="formDispositivo" class="btn-primary">Salvar Dispositivo</button>
+            <button type="submit" form="formDispositivo" class="btn-primary">Salvar</button>
         </footer>
-
     </div>
 </div>
 
@@ -181,4 +183,3 @@
   include_once __DIR__ . '/../includes/footer.php'; 
   $conn->close();
 ?>
-<script src="../assets/js/dispositivos.js"></script>
