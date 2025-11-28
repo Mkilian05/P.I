@@ -74,9 +74,19 @@ CREATE TABLE historico_consumo(
     data DATE NOT NULL,
     consumo DOUBLE NOT NULL, -- Removido (4) que era inválido para DOUBLE
     tempo_uso TIME NOT NULL,
-    fk_ambiente_historico INT(3) NOT NULL,
-    fk_dispositivo_historico INT(3) NOT NULL,
+    fk_ambi_histo INT(3) NOT NULL,
+    fk_disp_histo INT(3) NOT NULL,
     PRIMARY KEY (id_historico),
-    FOREIGN KEY (fk_ambiente_historico) REFERENCES ambiente(id_ambiente),
-    FOREIGN KEY (fk_dispositivo_historico) REFERENCES dispositivos(id_dispositivo)
+    FOREIGN KEY (fk_ambi_histo) REFERENCES ambiente(id_ambiente),
+    FOREIGN KEY (fk_disp_histo) REFERENCES dispositivos(id_dispositivo)
+);
+
+CREATE TABLE metas_usuario (
+    id_meta INT(11) NOT NULL AUTO_INCREMENT,
+    fk_usuario_id_usuario INT(11) NOT NULL,
+    valor_meta DECIMAL(10, 2) NOT NULL, -- Valor em Reais (R$)
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_meta),
+    FOREIGN KEY (fk_usuario_id_usuario) REFERENCES usuarios(id_usuario),
+    UNIQUE KEY unique_user_meta (fk_usuario_id_usuario) 
 );
