@@ -4,7 +4,7 @@
 
 > **Monitore e reduza o consumo de energia da sua casa de forma inteligente.**
 
-![Status](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
+![Status](https://img.shields.io/badge/Concluido-green)
 ![PHP](https://img.shields.io/badge/PHP-8.0+-777BB4?logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?logo=mysql&logoColor=white)
 ![Frontend](https://img.shields.io/badge/HTML5_CSS3_JS-Frontend-orange)
