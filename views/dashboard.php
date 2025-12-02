@@ -195,6 +195,26 @@
         </a>
     </div>
 
+    <div class="card fade-in" style="border-left: 5px solid #e91e63;"> <div style="margin-bottom: 10px;">
+            <i class="fas fa-chart-pie" style="font-size: 2.5rem; color: #e91e63;"></i>
+        </div>
+        <h3>Consumo por Ambiente</h3>
+        <p>Descubra qual cômodo gasta mais energia.</p>
+        <a href="relatorio_ambientes.php" class="btn-primary" style="text-decoration: none; display: inline-block; background-color: #e91e63;">
+            Ver Gráfico
+        </a>
+    </div>
+
+    <div class="card fade-in" style="border-left: 5px solid #673AB7;"> <div style="margin-bottom: 10px;">
+            <i class="fas fa-globe-americas" style="font-size: 2.5rem; color: #673AB7;"></i>
+        </div>
+        <h3>Estatísticas Globais</h3>
+        <p>Veja o consumo geral de todas as categorias.</p>
+        <a href="relatorio_global.php" class="btn-primary" style="text-decoration: none; display: inline-block; background-color: #673AB7;">
+            Ver Panorama
+        </a>
+    </div>
+
   </section>
 
 </main>
