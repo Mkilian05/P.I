@@ -101,7 +101,7 @@ include_once __DIR__ . '/../includes/sidebar-nav.php';
       </form>
 
       <div class="form-actions">
-            <form method="POST" action="../config/processa_casas.php" onsubmit="return confirm('Tem certeza? Isso removerá a casa e seus ambientes.');">
+            <form method="POST" action="../config/processa_casa.php" onsubmit="return confirm('Tem certeza? Isso removerá a casa e seus ambientes.');">
                 <input type="hidden" name="acao" value="excluir">
                 <input type="hidden" name="id_casa" value="<?php echo $casa_atual['id_casa']; ?>">
                 <button type="submit" class="btn-danger"><i class="fas fa-trash"></i> Excluir Casa</button>
